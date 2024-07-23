@@ -27,7 +27,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /help is issued."""
-    await update.message.reply_text("You can write /zrada @username to indicate zradoyob.")
+    await update.message.reply_text("You can write /zrada @username to indicate zradoyob.\n You can write /help to get instructions how to use bot.\n You can use /start to ... because abrycos.")
 
 
 async def zrada_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -48,10 +48,8 @@ async def zrada_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     image_url = 'https://example.com/your-image.jpg'
 
     media = [
-        InputMediaAnimation(
-            media=gif_url, caption=f'{username}, here is your GIF!'),
-        InputMediaPhoto(media=image_url,
-                        caption=f'{username}, here is your image!')
+        InputMediaAnimation(media='/files/gif.mp4', caption=f'{username}'),
+        InputMediaPhoto(media='/files/image.jpg')
     ]
 
     context.bot.send_media_group(chat_id=chat_id, media=media)
