@@ -44,15 +44,14 @@ async def zrada_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     chat_id = update.message.chat_id
     # Replace with your own URLs or paths to the GIF and image
-    gif_url = 'https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif'
-    image_url = 'https://example.com/your-image.jpg'
+    mp4_path = './files/gif.mp4'
+    image_path = './files/image.jpg'
 
-    media = [
-        InputMediaAnimation(media='/files/gif.mp4', caption=f'{username}'),
-        InputMediaPhoto(media='/files/image.jpg')
-    ]
+    with open(mp4_path, 'rb') as mp4_file:
+        await context.bot.send_animation(chat_id=chat_id, animation=mp4_file, caption=f'{username}')
 
-    context.bot.send_media_group(chat_id=chat_id, media=media)
+    with open(image_path, 'rb') as image_file:
+        await context.bot.send_photo(chat_id=chat_id, photo=image_file)
 
 
 # TODO: Add NLP model to process messages and say where is Zrada
